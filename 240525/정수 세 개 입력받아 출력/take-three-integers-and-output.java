@@ -6,9 +6,8 @@ public class Main {
 
         int a = sc.nextInt();
         int b = sc.nextInt();
+        int c = sc.nextInt();
 
-        int res = a + b;
-
-        System.out.println(a + " " + b + " " + res);
+        System.out.println(a + " " + b + " " + c);
     }
 }
