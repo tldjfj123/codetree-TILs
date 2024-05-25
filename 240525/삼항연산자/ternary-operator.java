@@ -6,7 +6,7 @@ public class Main {
 
         int score = sc.nextInt();
 
-        String res = score == 0 ? "failure" : "pass";
+        String res = score == 100 ? "pass" : "failure";
 
         System.out.println(res);
     }
