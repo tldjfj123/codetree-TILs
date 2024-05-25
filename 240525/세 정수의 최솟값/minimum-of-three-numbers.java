@@ -8,16 +8,20 @@ public class Main {
         int b = sc.nextInt();
         int c = sc.nextInt();
 
+        int res = 0;
+
         if (a >= b && c >= b) {
-            System.out.println(b);
+            res = b;
         }
 
         if (a >= c && b >= c) {
-            System.out.println(c);
+            res = c;
         }
 
         if (b >= a && c >= a) {
-            System.out.println(a);
+            res = a;
         }
+
+        System.out.println(res);
     }
 }
