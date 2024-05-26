@@ -7,8 +7,15 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
 
-        for (int i = b; i >= a; i--) {
-            System.out.printf(i + " ");
+        if (b > a) {
+            for (int i = b; i >= a; i--) {
+                System.out.printf(i + " ");
+            }
+        } else {
+            for (int i = a; i >= b; i--) {
+                System.out.printf(i + " ");
+            }
         }
+        
     }
 }
