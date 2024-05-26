@@ -9,6 +9,8 @@ public class Main {
 
         System.out.print(a / b + ".");
 
+        a %= b;
+
         int cnt = 0;
 
         while (cnt < 20) {
