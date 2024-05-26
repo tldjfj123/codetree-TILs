@@ -11,16 +11,14 @@ public class Main {
 
         if (aM > bM) {
             System.out.println("A");
-        } else {
-            System.out.println("B");
-        }
-
-        if (aM == bM) {
+        } else if (aM == bM) {
             if (aE > bE) {
                 System.out.println("A");
             } else {
                 System.out.println("B");
             }
+        } else {
+            System.out.println("B");
         }
     }
 }
