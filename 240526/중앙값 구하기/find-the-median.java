@@ -6,8 +6,6 @@ public class Main {
 
         String[] arr = sc.nextLine().split(" ");
 
-        Arrays.sort(arr);
-
         System.out.println(arr[1]);
     }
 }
