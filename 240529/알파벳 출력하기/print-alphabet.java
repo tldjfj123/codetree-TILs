@@ -12,8 +12,9 @@ public class Main {
                 System.out.print(c);
                 if (c == 'Z') {
                     c = 'A';
+                } else {
+                    c++;
                 }
-                c++;
             }
             System.out.println();
         }
