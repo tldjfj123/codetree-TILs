@@ -15,6 +15,9 @@ public class Main {
 
             //문자
             for (int k = 0; k < N - i; k++) {
+                if (c > 'Z') {
+                    c = 'A';
+                }
                 System.out.print(c + " ");
                 c++;
             }
