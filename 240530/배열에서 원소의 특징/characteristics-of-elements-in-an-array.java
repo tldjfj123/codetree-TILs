@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] arr = new int[10];
+        List<Integer> arr = new ArrayList<Integer>();
 
-        int idx = -1;
+        
         for (int i = 0; i < 10; i++) {
             int n = sc.nextInt();
 
@@ -14,11 +14,10 @@ public class Main {
                 break;
             }
 
-            arr[i] = n;
-            idx++;
+            arr.add(n);
         }
 
-        System.out.print(idx);
+        System.out.print(arr.get(arr.size()-1));
 
 
     }
