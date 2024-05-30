@@ -27,6 +27,7 @@ public class Main {
 
         double res2 = sum / (double)cnt;
 
-        System.out.print(res1 + " " + res2);
+        System.out.print(res1 + " ");
+        System.out.printf("%.1f", res2);
     }
 }
