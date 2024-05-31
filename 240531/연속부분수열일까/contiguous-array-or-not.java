@@ -20,7 +20,7 @@ public class Main {
             b[i] = input;
         }
         
-        int n = A - B + 1;
+        int n = A - B;
         String res = "Yes";
 
         for (int i = 0; i < n; i++) {
