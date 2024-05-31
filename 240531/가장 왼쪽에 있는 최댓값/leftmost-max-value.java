@@ -13,7 +13,7 @@ public class Main {
             arr[i] = n;
         }
 
-        while (arr.length > 1) {
+        while (arr.length >= 1) {
             int maxVal = -1;
             
             for (int i = 0; i < arr.length; i++) {
