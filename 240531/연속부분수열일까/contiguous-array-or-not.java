@@ -20,18 +20,24 @@ public class Main {
             b[i] = input;
         }
         
-        int n = A - B;
-        String res = "Yes";
+        int n = A - B + 1;
+        String res = "No";
 
         for (int i = 0; i < n; i++) {
-            int idx = 0;
+            int idx = 0; // B배열용 idx
+            boolean found = true;
 
             for (int j = i; j < i + B; j++) {
                 if (a[j] != b[idx]) {
-                    res = "No";
+                    found = false;
                     break;
                 }
                 idx++;
+            }
+
+            if (found) {
+                res = "Yes";
+                break;
             }
         }
 
