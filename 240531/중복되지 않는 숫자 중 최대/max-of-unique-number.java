@@ -12,12 +12,12 @@ public class Main {
             check[n]++;
         }
 
-        int maxVal = Integer.MIN_VALUE;
+        int maxVal = -1;
         for (int i = 1; i < 1001; i++) {
             if (i >= maxVal && check[i] == 1) {
                 maxVal = i;
             }
-        }
+        } 
 
         System.out.print(maxVal);
 
