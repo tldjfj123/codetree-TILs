@@ -44,6 +44,7 @@ public class Main {
                 for (int j = s; j <= e; j++) {
                     System.out.print(arr[j-1] + " ");
                 }
+                System.out.println();
 
             }
         }
