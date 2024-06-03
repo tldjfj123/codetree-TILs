@@ -19,5 +19,9 @@ public class Main {
                 System.out.println(arr[i]);
             }
         }
+
+        if (cnt == 0) {
+            System.out.print("None");
+        }
     }
 }
