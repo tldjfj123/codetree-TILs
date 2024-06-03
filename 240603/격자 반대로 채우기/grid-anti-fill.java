@@ -7,18 +7,21 @@ public class Main {
         int n = sc.nextInt();
         int[][] arr = new int[n][n];
         int v = 1;
+        boolean check = true;
 
         for (int i = n-1; i > -1; i--) {
-            if (i % 2 == 1) {
+            if (check) {
                 for (int j = n-1; j > -1; j--) {
                     arr[j][i] = v;
                     v++;
                 }
+                check = false;
             } else {
                 for (int j = 0; j < n; j++) {
                     arr[j][i] = v;
                     v++;
                 }
+                check = true;
             }
 
         }
