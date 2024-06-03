@@ -11,16 +11,18 @@ public class Main {
         }
 
         char std = sc.next().charAt(0);
+        boolean check = false;
 
         for (int i = 0; i < arr.length; i++) {
             int idx = arr[i].length()-1;
 
             if (arr[i].charAt(idx) == std) {
+                check = true;
                 System.out.println(arr[i]);
             }
         }
 
-        if (cnt == 0) {
+        if (!check) {
             System.out.print("None");
         }
     }
