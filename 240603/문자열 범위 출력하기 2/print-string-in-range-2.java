@@ -8,6 +8,9 @@ public class Main {
         int n = sc.nextInt();
 
         for (int i = s.length()-1; i >= s.length() - n; i--) {
+            if (i < 0) {
+                break;
+            }
             System.out.print(s.charAt(i));
         }
     }
