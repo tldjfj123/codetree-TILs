@@ -18,6 +18,9 @@ public class Main {
     }
 
     static String calc(int m, int d) {
+        if (m > 12 || m < 1) {
+            return "No";
+        }
         if (m == 2) {
             if (1 <= d && d <= 28) {
                 return "Yes";
