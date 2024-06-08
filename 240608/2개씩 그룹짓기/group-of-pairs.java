@@ -5,25 +5,25 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-
         List<Integer> arr = new ArrayList<Integer>();
 
-        for (int i = 0; i < 2*n; i++) {
+        for (int i = 0; i < 2 * n; i++) {
             arr.add(sc.nextInt());
         }
 
+        // 정렬
         Collections.sort(arr);
 
-        List<Integer> sub = arr.subList(2, n+1);
+        int maxSum = 0;
 
-        int res = 0;
-
-        for (Integer s : sub) {
-            res += s;
+        // 그룹 페어링 및 최댓값 계산
+        for (int i = 0; i < n; i++) {
+            int sum = arr.get(i) + arr.get(2 * n - 1 - i);
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
         }
 
-        res = Math.max(res + arr.get(0), res + arr.get(1));
-
-        System.out.print(res);
+        System.out.println(maxSum);
     }
 }
