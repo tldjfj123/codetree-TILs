@@ -23,7 +23,13 @@ public class Main {
             sum2 += numOfDays[i];
         }
 
-        System.out.print(sum2 - sum1);
+        if (m1 == m2 && d1 == d2) {
+            System.out.print(1);
+        } else {
+            System.out.print(sum2 - sum1);
+        }
+
+        
 
     }
 }
