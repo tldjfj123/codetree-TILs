@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Person implements Comparable<Person>{
+class Person {
     String name;
     int height;
     double weight;
@@ -10,51 +10,50 @@ class Person implements Comparable<Person>{
         this.height = height;
         this.weight = weight;
     }
-    
-    @Override
-    public int compareTo(Person person) {
-        // 이름으로 비교
-        int nameCompare = this.name.compareTo(person.name);
-        if (nameCompare != 0) {
-            return nameCompare;
-        } else {
-            // 이름이 같으면 키로 비교
-            return person.height - this.height;
-        }
-    }
 }
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Person[] people = new Person[5];
+        Person[] arr = new Person[5];
 
-        // 입력 받기
-        for (int i = 0; i < 5; i++) {
-            String name = sc.next();
-            int height = sc.nextInt();
-            double weight = sc.nextDouble();
-            people[i] = new Person(name, height, weight);
+        for (int i = 0; i <5; i++) {
+            arr[i] = new Person(sc.next(), sc.nextInt(), sc.nextDouble());
         }
 
-        // 이름순으로 정렬
-        Arrays.sort(people);
+        Arrays.sort(arr, new Comparator<Person>() {  
+            @Override
+            public int compare(Person a, Person b) { // 키 기준 내림차순 정렬합니다.
+                return a.name.compareTo(b.name);
+            }
+        });
 
-        // 이름순으로 출력
+        // 이름순으로 정렬한 결과를 출력합니다.
         System.out.println("name");
-        for (Person person : people) {
-            System.out.printf("%s %d %.1f%n", person.name, person.height, person.weight);
+        for (int i = 0; i < 5; i++){
+            System.out.print(arr[i].name + " ");
+            System.out.print(arr[i].height + " ");
+            System.out.printf("%.1f\n", arr[i].weight);
         }
-
-        // 키가 큰 순으로 정렬하여 출력
-        Arrays.sort(people, Comparator.comparingInt((Person p) -> p.height).reversed());
 
         System.out.println();
 
+         // custom comparator를 활용한 정렬
+        Arrays.sort(arr, new Comparator<Person>() {  
+            @Override
+            public int compare(Person a, Person b) { // 키 기준 내림차순 정렬합니다.
+                return b.height - a.height;
+            }
+        });
+
+        // 키순으로 정렬한 결과를 출력합니다.
         System.out.println("height");
-        for (Person person : people) {
-            System.out.printf("%s %d %.1f%n", person.name, person.height, person.weight);
+        for (int i = 0; i < 5; i++){
+            System.out.print(arr[i].name + " ");
+            System.out.print(arr[i].height + " ");
+            System.out.printf("%.1f\n", arr[i].weight);
         }
+
     }
 }
