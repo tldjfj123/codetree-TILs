@@ -18,7 +18,7 @@ class Student implements Comparable<Student>{
         }
 
         if (this.weight == student.weight) {
-            return student.idx - this.idx;
+            return this.idx - student.idx;
         }
 
         return student.height - this.height;
