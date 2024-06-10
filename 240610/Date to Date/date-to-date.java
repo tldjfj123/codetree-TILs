@@ -15,21 +15,15 @@ public class Main {
         int sum1 = d1;
         int sum2 = d2;
 
-        for (int i = 0; i <= m1; i++) {
+        for (int i = 0; i < m1; i++) {
             sum1 += numOfDays[i];
         }
 
-        for (int i = 0; i <= m2; i++) {
+        for (int i = 0; i < m2; i++) {
             sum2 += numOfDays[i];
         }
 
-        if (m1 == m2 && d1 == d2) {
-            System.out.print(1);
-        } else {
-            System.out.print(sum2 - sum1);
-        }
-
-        
+        System.out.print(sum2 - sum1 + 1);
 
     }
 }
