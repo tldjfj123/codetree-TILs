@@ -36,7 +36,7 @@ public class Main {
             int a = arr[i][0];
             int b = arr[i][1];
 
-            for (int j = a; j < b; j++) {
+            for (int j = a; j < b-1; j++) {
                 res[j]++;
             }
         }
