@@ -22,7 +22,7 @@ public class Main {
         }
 
         for (int i = arr.size()-1; i > -1; i--) {
-            tmp += (int)Math.pow(8, i) * arr.get(i);
+            tmp += (int)Math.pow(a, i) * arr.get(i);
         }
 
         List<Integer> arr2 = new ArrayList<Integer>();
