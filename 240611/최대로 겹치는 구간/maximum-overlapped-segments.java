@@ -17,7 +17,7 @@ public class Main {
                 offset = (int)Math.abs(s);
             }
 
-            arr[i] = new int[]{s, e-1};
+            arr[i] = new int[]{s, e};
         }
 
         int max = Integer.MIN_VALUE;
@@ -36,7 +36,7 @@ public class Main {
             int a = arr[i][0];
             int b = arr[i][1];
 
-            for (int j = a; j < b-1; j++) {
+            for (int j = a; j < b; j++) {
                 res[j]++;
             }
         }
