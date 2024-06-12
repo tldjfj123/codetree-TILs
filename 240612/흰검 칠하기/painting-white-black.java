@@ -7,7 +7,7 @@ import java.util.*;
 3. for문 돌면서 시뮬레이션
 */
 
-class Order{
+class Order {
     int value;
     String order;
 
@@ -45,7 +45,7 @@ public class Main {
         }
 
         // offset 값 구하기 위해 배열크기 및 최대최소 구하기
-        int min = 0;
+        int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
 
         for (Integer t : tmp) {
@@ -62,18 +62,18 @@ public class Main {
         int offset = min * -1;
 
         int[] simArr = new int[arrSize]; // 횟수 저장할곳
-        String[] colorArr = new String[arrSize]; // 색깔 저장할곳
+        String[] colorArr = new String[arrSize];
 
-        int idx = 0;
+        int idx = offset;
         for (Order o : orders) {
             if (o.order.equals("R")) {
-                for (int i = idx + offset; i < idx + o.value + offset; i++) {
+                for (int i = idx; i < idx + o.value; i++) {
                     simArr[i]++;
                     colorArr[i] = "B";
                 }
                 idx += o.value;
             } else {
-                for (int i = idx + offset - 1 ; i >= idx + offset - o.value; i--) {
+                for (int i = idx-1; i >= idx - o.value; i--) {
                     simArr[i]++;
                     colorArr[i] = "W";
                 }
