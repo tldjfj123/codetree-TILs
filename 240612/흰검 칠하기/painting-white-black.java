@@ -34,20 +34,16 @@ public class Main {
             String order = sc.next();
 
             orders[i] = new Order(value, order);
-
+            tmp.add(curr);
             if (order.equals("R")) {
-                tmp.add(curr + value);
-                curr += value;
+                curr += value - 1;
             } else {
-                tmp.add(curr - value);
-                curr -= value;
+                curr -= value - 1;
             }
         }
 
-        // offset 값 구하기 위해 배열크기 및 최대최소 구하기
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
-
         for (Integer t : tmp) {
             if (t < min) {
                 min = t;
@@ -57,47 +53,44 @@ public class Main {
                 max = t;
             }
         }
-
-        int arrSize = max - min;
+        
+        //배열 크기
+        int size = max - min + 1;
         int offset = min * -1;
 
-        int[] blackArr = new int[arrSize]; // 횟수 저장할곳
-        int[] whiteArr = new int[arrSize];
-        String[] colorArr = new String[arrSize];
+        int[] whiteArr = new int[size];
+        int[] blackArr = new int[size];
+        String[] colorArr = new String[size];
 
-        int idx = offset;
         for (Order o : orders) {
             if (o.order.equals("R")) {
-                for (int i = idx; i < idx + o.value; i++) {
+                for (int i = offset; i < offset + o.value; i++) {
                     blackArr[i]++;
                     colorArr[i] = "B";
                 }
-                idx += o.value;
+                offset += (o.value - 1);
             } else {
-                for (int i = idx-1; i >= idx - o.value; i--) {
+                for (int i = offset; i > offset - o.value; i--) {
                     whiteArr[i]++;
                     colorArr[i] = "W";
                 }
-                idx -= o.value;
+                offset -= (o.value - 1);
+
             }
         }
-
         
-        // System.out.println(Arrays.toString(colorArr));
-        // System.out.println(Arrays.toString(whiteArr));
-        // System.out.println(Arrays.toString(blackArr));
-        int white = 0;
         int black = 0;
+        int white = 0;
         int gray = 0;
 
-        for (int i = 0; i < arrSize; i++) {
-            if (blackArr[i] >= 2 && whiteArr[i] >= 2) {
+        for (int i = 0; i < colorArr.length; i++) {
+            if (whiteArr[i] + blackArr[i] >= 4) {
                 gray++;
             } else {
-                if (colorArr[i].equals("W")) {
-                    white++;
-                } else {
+                if (colorArr[i].equals("B")) {
                     black++;
+                } else {
+                    white++;
                 }
             }
         }
