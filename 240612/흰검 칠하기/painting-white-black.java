@@ -84,7 +84,7 @@ public class Main {
         int gray = 0;
 
         for (int i = 0; i < colorArr.length; i++) {
-            if (whiteArr[i] + blackArr[i] >= 4) {
+            if (whiteArr[i] >= 2 && blackArr[i] >= 2) {
                 gray++;
             } else {
                 if (colorArr[i].equals("B")) {
