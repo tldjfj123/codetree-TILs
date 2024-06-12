@@ -81,6 +81,11 @@ public class Main {
                 idx -= o.value;
             }
         }
+
+        
+        // System.out.println(Arrays.toString(colorArr));
+        // System.out.println(Arrays.toString(whiteArr));
+        // System.out.println(Arrays.toString(blackArr));
         int white = 0;
         int black = 0;
         int gray = 0;
