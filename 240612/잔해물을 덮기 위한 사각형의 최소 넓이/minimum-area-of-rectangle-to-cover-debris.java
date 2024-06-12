@@ -35,23 +35,29 @@ public class Main {
         }
 
         offset *= -1;
-
-
+        
+        int cnt = 0;
         for (int i = x1 + offset; i < x2 + offset; i++) {
             for (int j = y1 + offset; j < y2 + offset; j++) {
                 board[i][j] = 1;
+                cnt++;
             }
         }
 
         for (int i = x3 + offset; i < x4 + offset; i++) {
             for (int j = y3 + offset; j < y4 + offset; j++) {
                 if (board[i][j] == 1) {
-                    board[i][j] = 0;
+                    cnt--;
                 }
             }
         }
 
-        System.out.print((int)Math.abs(x2 - x1) * Math.abs(y2 - y1));
+        if (cnt == 0) {
+            System.out.print(0);
+        } else {
+            System.out.print((int)Math.abs(x2 - x1) * Math.abs(y2 - y1));
+        }
+        
 
     }
 }
