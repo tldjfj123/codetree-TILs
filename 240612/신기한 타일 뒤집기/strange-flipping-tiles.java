@@ -34,54 +34,44 @@ public class Main {
             String order = sc.next();
 
             orders[i] = new Order(value, order);
-
             if (order.equals("R")) {
-                tmp.add(curr + value);
-                curr += value;
+                curr += value - 1;
             } else {
-                tmp.add(curr - value);
-                curr -= value;
+                curr -= value - 1;
             }
+            tmp.add(curr);
         }
 
-        // offset 값 구하기 위해 배열크기 및 최대최소 구하기
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-
-        for (Integer t : tmp) {
-            if (t < min) {
-                min = t;
-            }
-
-            if (t > max) {
-                max = t;
-            }
-        }
-
-        int arrSize = max - min;
+        int min = Collections.min(tmp);
+        int max = Collections.max(tmp);
+        
+        // System.out.println(min + " " + max);
+        //배열 크기
+        int size = max - min + 1;
         int offset = min * -1;
 
-        String[] colorArr = new String[arrSize];
+        String[] colorArr = new String[size];
 
-        int idx = offset;
+        
         for (Order o : orders) {
             if (o.order.equals("R")) {
-                for (int i = idx; i < idx + o.value; i++) {
+                for (int i = offset; i < offset + o.value; i++) {
                     colorArr[i] = "B";
                 }
-                idx += o.value;
+                offset += (o.value - 1);
             } else {
-                for (int i = idx-1; i >= idx - o.value; i--) {
+                for (int i = offset; i > offset - o.value; i--) {
                     colorArr[i] = "W";
                 }
-                idx -= o.value;
+                offset -= (o.value - 1);
+
             }
         }
-
-        int white = 0;
+        
         int black = 0;
+        int white = 0;
 
-        for (int i = 0; i < arrSize; i++) {
+        for (int i = 0; i < colorArr.length; i++) {
             if (colorArr[i].equals("B")) {
                 black++;
             } else {
@@ -89,6 +79,9 @@ public class Main {
             }
         }
 
-        System.out.println(white + " " + black);
+        System.out.print(white + " " + black);
+
+
+        
     }
 }
