@@ -34,26 +34,18 @@ public class Main {
             String order = sc.next();
 
             orders[i] = new Order(value, order);
-            tmp.add(curr);
             if (order.equals("R")) {
                 curr += value - 1;
             } else {
                 curr -= value - 1;
             }
+            tmp.add(curr);
         }
 
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        for (Integer t : tmp) {
-            if (t < min) {
-                min = t;
-            }
-
-            if (t > max) {
-                max = t;
-            }
-        }
+        int min = Collections.min(tmp);
+        int max = Collections.max(tmp);
         
+        // System.out.println(min + " " + max);
         //배열 크기
         int size = max - min + 1;
         int offset = min * -1;
@@ -62,6 +54,7 @@ public class Main {
         int[] blackArr = new int[size];
         String[] colorArr = new String[size];
 
+        
         for (Order o : orders) {
             if (o.order.equals("R")) {
                 for (int i = offset; i < offset + o.value; i++) {
