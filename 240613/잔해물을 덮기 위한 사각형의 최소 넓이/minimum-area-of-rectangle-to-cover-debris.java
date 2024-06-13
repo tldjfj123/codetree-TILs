@@ -1,80 +1,64 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
+    public static final int OFFSET = 1000;
+    public static final int MAX_R = 2000;
+    public static final int N = 2;
+    
+    public static int[] x1 = new int[N];
+    public static int[] y1 = new int[N];
+    public static int[] x2 = new int[N];
+    public static int[] y2 = new int[N];
+    
+    public static int[][] checked = new int[MAX_R + 1][MAX_R + 1];
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        int[][] board = new int[2001][2001];
-        int[][] board2 = new int[2001][2001];
-
-        int x1 = sc.nextInt();
-        int y1 = sc.nextInt();
-        int x2 = sc.nextInt();
-        int y2 = sc.nextInt();
-
-        int x3 = sc.nextInt();
-        int y3 = sc.nextInt();
-        int x4 = sc.nextInt();
-        int y4 = sc.nextInt();
-
-        int offset = 0;
-
-        if (x1 < 0) {
-            offset = Math.min(x1, offset);
+        // 입력
+        for(int i = 0; i < N; i++) {
+            x1[i] = sc.nextInt();
+            y1[i] = sc.nextInt();
+            x2[i] = sc.nextInt();
+            y2[i] = sc.nextInt();
+            
+            // OFFSET을 더해줍니다.
+            x1[i] += OFFSET;
+            y1[i] += OFFSET;
+            x2[i] += OFFSET;
+            y2[i] += OFFSET;
         }
-
-        if (y1 < 0) {
-            offset = Math.min(y1, offset);
-        }
-
-        if (x3 < 0) {
-            offset = Math.min(x3, offset);
-        }
-
-        if (y3 < 0) {
-            offset = Math.min(y3, offset);
-        }
-
-        offset *= -1;
         
-        int cnt = 0;
-        for (int i = x1 + offset; i < x2 + offset; i++) {
-            for (int j = y1 + offset; j < y2 + offset; j++) {
-                board[i][j] = 1;
-                cnt++;
-            }
-        }
+        // 직사각형에 주어진 순으로 1, 2 번호를 붙여줍니다.
+        // 격자 단위로 진행하는 문제이므로
+        // x2, y2에 등호가 들어가지 않음에 유의합니다.
+        for(int i = 0; i < N; i++)
+            for(int x = x1[i]; x < x2[i]; x++)
+                for(int y = y1[i]; y < y2[i]; y++)
+                    checked[x][y] = i + 1;
+        
+        // 1, 2 순으로 붙였는데도
+        // 아직 숫자 1로 남아있는 곳들 중 최대 최소 x, y 값을 전부 계산합니다.
+        int minX = MAX_R, maxX = 0, minY = MAX_R, maxY = 0;
+        boolean firstRectExist = false;
+        for(int x = 0; x <= MAX_R; x++)
+            for(int y = 0; y <= MAX_R; y++)
+                if(checked[x][y] == 1) {
+                    firstRectExist = true;
+                    minX = Math.min(minX, x);
+                    maxX = Math.max(maxX, x);
+                    minY = Math.min(minY, y);
+                    maxY = Math.max(maxY, y);
+                }
+        
+        // 넓이를 계산합니다.
+        int area;
+        // Case 1. 첫 번째 직사각형이 전혀 남아있지 않다면 넓이는 0입니다.
+        if(!firstRectExist)
+            area = 0;
+        // Case 2. 첫 번째 직사각형이 남아있다면, 넓이를 계산합니다.
+        else
+            area = (maxX - minX + 1) * (maxY - minY + 1);
 
-        for (int i = x3 + offset; i < x4 + offset; i++) {
-            for (int j = y3 + offset; j < y4 + offset; j++) {
-                board2[i][j] = 1;
-            }
-        }
-
-        //세로 계산
-        int resY = Integer.MIN_VALUE;
-        for (int i = x1 + offset; i < x2 + offset; i++) {
-            int tmp = 0;
-            for (int j = y1 + offset; j < y2 + offset; j++) {
-                if (board[i][j] == 1 && board2[i][j] != 1) {
-                    tmp++;
-                } 
-            }
-            resY = Math.max(resY, tmp);
-        }
-
-        int resX = Integer.MIN_VALUE;
-        for (int i = y1 + offset; i < y2 + offset; i++) {
-            int tmp = 0;
-            for (int j = x1 + offset; j < x2 + offset; j++) {
-                if (board[j][i] == 1 && board2[j][i] != 1) {
-                    tmp++;
-                } 
-            }
-            resX = Math.max(resX, tmp);
-        }
-
-        System.out.print(resX * resY);
-
+        System.out.print(area);
     }
 }
