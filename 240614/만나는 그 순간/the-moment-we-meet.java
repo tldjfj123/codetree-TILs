@@ -20,17 +20,18 @@ public class Main {
         Order[] aOrders = new Order[N];
         Order[] bOrders = new Order[M];
 
-        int[] statusA = new int[1000];
-        int[] statusB = new int[1000];
-
+        int size = 0;
         for (int i = 0; i < N; i++) {
             aOrders[i] = new Order(sc.next(), sc.nextInt());
-
+            size += aOrders[i].value;
         }
 
         for (int i = 0; i < M; i++) {
             bOrders[i] = new Order(sc.next(), sc.nextInt());
         }
+
+        int[] statusA = new int[size];
+        int[] statusB = new int[size];
 
         int aIdx = 0;
         int aPos = 0;
@@ -68,7 +69,7 @@ public class Main {
         }
         
         int res = -1;
-        for (int i = 1; i < 1000; i++) {
+        for (int i = 1; i < size; i++) {
             if (statusA[i] == statusB[i]) {
                 res = i;
                 break;
