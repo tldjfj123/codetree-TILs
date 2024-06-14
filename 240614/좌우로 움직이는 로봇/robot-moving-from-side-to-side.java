@@ -81,28 +81,25 @@ public class Main {
             bIdx += value;        
         }
 
-        if (aIdx < bIdx) {
-            for (int i = aIdx; i < bIdx; i++) {
-                statusA[i] = statusA[i-1];
-            }
-        } else if (aIdx > bIdx) {
-            for (int i = bIdx; i < aIdx; i++) {
-                statusB[i] = statusB[i-1];
+        if (aIdx < size) {
+            for (int i = aIdx; i < size; i++) {
+                statusA[i] = aCurr; // 최종 위치로 채움
             }
         }
-        
+        if (bIdx < size) {
+            for (int i = bIdx; i < size; i++) {
+                statusB[i] = bCurr; // 최종 위치로 채움
+            }
+        }
+
         // System.out.println(Arrays.toString(statusA));
         // System.out.println(Arrays.toString(statusB));
 
         int cnt = 0;
         for (int i = 0; i < size; i++) {
             if (statusA[i] == statusB[i]) {
-                if (i == 0) {
+                if (i == 0 || statusA[i-1] != statusB[i-1]) {
                     cnt++;
-                } else {
-                    if (statusA[i-1] != statusB[i-1]) {
-                        cnt++;
-                    }
                 }
             }
         }
