@@ -98,7 +98,7 @@ public class Main {
         int cnt = 0;
         for (int i = 0; i < size; i++) {
             if (statusA[i] == statusB[i]) {
-                if (i == 0 || statusA[i-1] != statusB[i-1]) {
+                if (i != 0 && statusA[i-1] != statusB[i-1]) {
                     cnt++;
                 }
             }
