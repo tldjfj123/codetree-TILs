@@ -74,10 +74,13 @@ public class Main {
             int end = e.y - 1;
 
             //시작점 숙주 && 끝점 감염 안됐음 && 횟수 남아있을 때
-            if (arr[start].isInfected && arr[start].count > 0 && !arr[end].isInfected) {
+            if (arr[start].isInfected) {
+                //끝점 인간일일경우
+                if (!arr[end].isInfected) {
+                    arr[end].isInfected = true;
+                    arr[end].count = K;
+                } 
                 arr[start].count--;
-                arr[end].isInfected = true;
-                arr[end].count = K;
             }
         }
 
