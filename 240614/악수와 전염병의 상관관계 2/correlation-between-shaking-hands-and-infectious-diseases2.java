@@ -73,7 +73,8 @@ public class Main {
             int start = e.x;
             int end = e.y;
 
-            if (arr[start-1].isInfected && arr[start-1].count > 0) {
+            //시작점 숙주 && 끝점 감염 안됐음 && 횟수 남아있을 때
+            if (arr[start-1].isInfected && arr[start-1].count > 0 && !arr[end-1].isInfected) {
                 arr[start-1].count--;
                 arr[end-1].isInfected = true;
                 arr[end-1].count = K;
