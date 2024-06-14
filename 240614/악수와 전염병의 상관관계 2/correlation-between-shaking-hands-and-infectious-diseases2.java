@@ -56,7 +56,7 @@ public class Main {
             }
         }
 
-        //시간별 정렬 위해 Event 배열 생성
+        //시간순 정렬 위해 Event 배열 생성
         Event[] event = new Event[T];
 
         for (int i = 0; i < T; i++) {
@@ -70,17 +70,31 @@ public class Main {
         Arrays.sort(event);
 
         for (Event e : event) {
-            int start = e.x - 1;
-            int end = e.y - 1;
+            int start = e.x - 1; //악수 왼쪽 개발자 인덱스
+            int end = e.y - 1; // 악수 오른쪽 개발자 인덱스
 
-            //시작점 숙주 && 끝점 감염 안됐음 && 횟수 남아있을 때
-            if (arr[start].isInfected) {
-                //끝점 인간일일경우
+            //시작점이 좀비
+            if (arr[start].isInfected && arr[start].count > 0) {
+                //끝이 사람
                 if (!arr[end].isInfected) {
                     arr[end].isInfected = true;
                     arr[end].count = K;
-                } 
+                } else { //끝이 좀비
+                    if (arr[end].count > 0) {
+                        arr[end].count--;
+                    }
+                }
                 arr[start].count--;
+            }
+
+            //시작점이 인간
+            if (!arr[start].isInfected) {
+                //끝점 좀비일경우
+                if (arr[end].isInfected && arr[end].count > 0) {
+                    arr[start].isInfected = true;
+                    arr[start].count = K;
+                    arr[end].count--;
+                } 
             }
         }
 
