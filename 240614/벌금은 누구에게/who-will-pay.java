@@ -19,6 +19,7 @@ public class Main {
 
             if (arr[v-1] >= K) {
                 res = v;
+                break;
             }
         }
 
