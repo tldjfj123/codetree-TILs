@@ -74,21 +74,28 @@ public class Main {
             int end = e.y - 1; // 악수 오른쪽 개발자 인덱스
 
             //시작점이 좀비
-            if (arr[start].isInfected && arr[start].count > 0) {
-                //끝이 사람
-                if (!arr[end].isInfected) {
-                    arr[end].isInfected = true;
-                    arr[end].count = K;
-                } else { //끝이 좀비
+            if (arr[start].isInfected) {
+                if (arr[start].count > 0) {
+                    //끝이 사람
+                    if (!arr[end].isInfected) {
+                        arr[end].isInfected = true;
+                        arr[end].count = K;
+                    } else {
+                        if (arr[end].count > 0) {
+                            arr[end].count--;
+                        }
+                    }
+                    arr[start].count--;
+                } else {
                     if (arr[end].count > 0) {
                         arr[end].count--;
                     }
                 }
-                arr[start].count--;
+                
             }
 
             //시작점이 인간
-            if (arr[start].isInfected) {
+            if (!arr[start].isInfected) {
                 //끝점 좀비일경우
                 if (arr[end].isInfected && arr[end].count > 0) {
                     arr[start].isInfected = true;
