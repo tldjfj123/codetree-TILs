@@ -88,7 +88,7 @@ public class Main {
             }
 
             //시작점이 인간
-            if (!arr[start].isInfected) {
+            if (arr[start].isInfected) {
                 //끝점 좀비일경우
                 if (arr[end].isInfected && arr[end].count > 0) {
                     arr[start].isInfected = true;
