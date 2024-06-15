@@ -23,7 +23,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             int v = sc.nextInt();
             int t = sc.nextInt();
-
+            time += t;
             orderA[i] = new Order(v, t);
         }
 
@@ -61,8 +61,28 @@ public class Main {
             bIdx += o.t;
         }
 
-        System.out.println(statusA);
-        System.out.println(statusB);
+        // System.out.println(Arrays.toString(statusA));
+        // System.out.println(Arrays.toString(statusB));
 
+        int[] hof = new int[time];
+        // 1 = A 우세, 2 = B 우세, 3 = 둘이 같음
+        for (int i = 0; i < time; i++) {
+            if (statusA[i] > statusB[i]) {
+                hof[i] = 1;
+            } else if (statusA[i] < statusB[i]) {
+                hof[i] = 2;
+            } else {
+                hof[i] = 3;
+            }
+        }
+        
+        int res = 1;
+        for (int i = 1; i < time; i++) {
+            if (hof[i] != hof[i-1]) {
+                res++;
+            }
+        }
+
+        System.out.println(res);
     }
 }
