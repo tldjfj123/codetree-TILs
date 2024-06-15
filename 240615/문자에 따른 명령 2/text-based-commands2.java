@@ -9,6 +9,9 @@ public class Main {
         int idx = 0;
         char[] arr = sc.next().toCharArray();
 
+        int x = 0;
+        int y = 0;
+
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 'L') {
                 idx--;
@@ -21,9 +24,12 @@ public class Main {
                     idx = 0;
                 }
             } else {
-                System.out.println(dx[idx] + " " + dy[idx]);
+                x += dx[idx];
+                y += dy[idx];
             }
         }
+
+        System.out.println(x + " " + y);
 
         
     }
