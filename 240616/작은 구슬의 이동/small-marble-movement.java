@@ -1,11 +1,11 @@
 import java.util.*;
 
 public class Main {
-    static int[] dx = {0, 0, 1, -1};
-    static int[] dy = {-1, 1, 0, 0};
+    static int[] dx = {-1, 1, 0, 0}; // U D R L 
+    static int[] dy = {0, 0, 1, -1};
 
     public static boolean inRange(int x, int y, int limit) {
-        if (0 <= x && x < limit && 0 <= y && y < limit) {
+        if (0 < x && x <= limit && 0 < y && y <= limit) {
             return true;
         }
         return false;
@@ -16,11 +16,12 @@ public class Main {
         int n = sc.nextInt(); // 격자 크기
         int t = sc.nextInt(); // 시간
 
-        int r = sc.nextInt()-1; // 시작 x값
-        int c = sc.nextInt()-1; // 시작 y값
+        int r = sc.nextInt(); // 시작 x값
+        int c = sc.nextInt(); // 시작 y값
         String d = sc.next(); // U, D, R, L
 
         for (int i = 0; i < t; i++) {
+            // System.out.println("start " + r + " " + c);
             if (d.equals("U")) {
                 int nx = r + dx[0];
                 int ny = c + dy[0];
@@ -62,9 +63,10 @@ public class Main {
                     d = "R";
                 }
             }
+            // System.out.println("end " + r + " " + c);
         }
 
-        System.out.println(c + " " + r);
+        System.out.println(r + " " + c);
 
 
     }
