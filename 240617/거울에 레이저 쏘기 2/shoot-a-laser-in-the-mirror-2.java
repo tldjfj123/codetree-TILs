@@ -10,6 +10,11 @@ class Start {
         this.order = order;
         this.point = point;
     }
+
+    @Override
+    public String toString() {
+        return num + " " + order + " " + point;
+    }
 }
 
 public class Main {
@@ -43,7 +48,7 @@ public class Main {
 
         int k = sc.nextInt();
 
-        String[] direction = {"S", "E", "N", "W"};
+        String[] direction = {"S", "W", "N", "E"};
         Start[] starts = new Start[n * 4];
 
         int idx = 0;
@@ -62,6 +67,8 @@ public class Main {
             }
             startIdx++;
         }
+
+        // System.out.println(Arrays.toString(starts));
 
         Start start = starts[k - 1];
         int calcX = start.point[0];
