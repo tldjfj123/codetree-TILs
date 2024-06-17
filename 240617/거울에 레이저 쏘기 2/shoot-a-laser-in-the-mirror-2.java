@@ -17,7 +17,7 @@ class Start {
     }
 }
 
-public class Main {
+public class Main { 
     static int n;
     static int[] dx = {-1, 0, 1, 0}; // N E S W
     static int[] dy = {0, 1, 0, -1};
@@ -88,15 +88,25 @@ public class Main {
         int cnt = 0;
 
         while (inRange(calcX, calcY)) {
-            if (arr[calcX][calcY] == 1) { // Mirror '\'
-                startDir = (startDir + 1) % 4;
-            } else { // Mirror '/'
-                startDir = (startDir + 3) % 4; // equivalent to startDir - 1 but wraps around
+            char mirror = arr[calcX][calcY] == 1 ? '\\' : '/';
+
+            if (mirror == '/') {
+                if (startDir == 0) startDir = 1; // N -> E
+                else if (startDir == 1) startDir = 0; // E -> N
+                else if (startDir == 2) startDir = 3; // S -> W
+                else if (startDir == 3) startDir = 2; // W -> S
+            } else {
+                if (startDir == 0) startDir = 3; // N -> W
+                else if (startDir == 1) startDir = 2; // E -> S
+                else if (startDir == 2) startDir = 1; // S -> E
+                else if (startDir == 3) startDir = 0; // W -> N
             }
+
             calcX += dx[startDir];
             calcY += dy[startDir];
             cnt++;
         }
+
 
         System.out.println(cnt);
     }
