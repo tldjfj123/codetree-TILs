@@ -64,7 +64,7 @@ public class Main {
 
         // System.out.println(Arrays.deepToString(arr));
 
-        String[] direction = {"S", "W", "N", "E"};
+        String[] direction = {"S", "E", "N", "W"};
         Start[] starts = new Start[n * 4];
 
         int idx = 0;
