@@ -107,8 +107,8 @@ public class Main {
             if (arr[calcX][calcY] == 1) { // 마이너스
                 startDir++;
 
-                if (startDir < 0) {
-                    startDir = 3;
+                if (startDir > 3) {
+                    startDir = 0;
                 }
 
                 calcX += dx[startDir];
@@ -116,8 +116,8 @@ public class Main {
             } else { // 플러스
                 startDir--;
 
-                if (startDir > 3) {
-                    startDir = 0;
+                if (startDir < 0) {
+                    startDir = 3;
                 }
 
                 calcX += dx[startDir];
