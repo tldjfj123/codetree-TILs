@@ -20,11 +20,6 @@ class Start {
         this.order = order;
         this.point = point;
     }
-
-    @Override
-    public String toString() {
-        return this.num + " " + this.order + Arrays.toString(point);
-    }
 }
 
 public class Main {
@@ -105,57 +100,29 @@ public class Main {
             startDir = 3;
         }
 
-        int cnt = 0;
-        int before = 0; 
+        int cnt = 0; 
         
         while (inRange(calcX, calcY)) {
             // System.out.println(calcX + " " + calcY);
-            if (before == 0) {
-                if (arr[calcX][calcY] == 1) { // 마이너스
-                    startDir--;
+            if (arr[calcX][calcY] == 1) { // 마이너스
+                startDir++;
 
-                    if (startDir < 0) {
-                        startDir = 3;
-                    }
-
-                    calcX += dx[startDir];
-                    calcY += dy[startDir];
-                    before = 1;
-                } else { // 플러스
-                    startDir++;
-
-                    if (startDir > 3) {
-                        startDir = 0;
-                    }
-
-                    calcX += dx[startDir];
-                    calcY += dy[startDir];
-                    before = 2;
+                if (startDir < 0) {
+                    startDir = 3;
                 }
-            } else {
-                if (arr[calcX][calcY] == before) {
-                    startDir++;
 
-                    if (startDir > 3) {
-                        startDir = 0;
-                    }
+                calcX += dx[startDir];
+                calcY += dy[startDir];
+            } else { // 플러스
+                startDir--;
 
-                    calcX += dx[startDir];
-                    calcY += dy[startDir];
-                    before = 2;
-                } else {
-                    startDir--;
-
-                    if (startDir < 0) {
-                        startDir = 3;
-                    }
-
-                    calcX += dx[startDir];
-                    calcY += dy[startDir];
-                    before = 1;
+                if (startDir > 3) {
+                    startDir = 0;
                 }
+
+                calcX += dx[startDir];
+                calcY += dy[startDir];
             }
-            
             cnt++;
         }
 
