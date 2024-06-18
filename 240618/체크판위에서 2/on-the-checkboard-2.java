@@ -31,53 +31,56 @@ public class Main {
             }
         }
 
-        int x = 0;
-        int y = 0;
-        char std = arr[x][y];
-        boolean checked = false;
+        if (arr[0][0] != arr[R-1][C-1]) {
+            int x = 0;
+            int y = 0;
+            char std = arr[x][y];
+            boolean checked = false;
 
-        List<Point> arr1 = new ArrayList<Point>() ;
+            List<Point> arr1 = new ArrayList<Point>() ;
 
-        for (int i = x+1; i < R-1; i++) {
-            for (int j = y+1; j < C-1; j++) {
-                if (arr[i][j] != std) {
-                    arr1.add(new Point(i, j));
-                    visited[i][j] = true;
-                    checked = true;
-                }
-            }
-        }
-
-        if (checked) {
-            if (std == 'W') {
-                std = 'B';
-            } else {
-                std = 'W';
-            }
-            
-        }
-
-        // System.out.println(arr1);
-
-        List<Point> arr2 = new ArrayList<Point>() ;
-
-        int res = 0;
-        for (Point p : arr1) {
-            for (int i = p.x+1; i < R-1; i++) {
-                for (int j = p.y+1; j < C-1; j++) {
+            for (int i = x+1; i < R-1; i++) {
+                for (int j = y+1; j < C-1; j++) {
                     if (arr[i][j] != std) {
-                        res++;
+                        arr1.add(new Point(i, j));
+                        visited[i][j] = true;
+                        checked = true;
                     }
                 }
             }
+
+            if (checked) {
+                if (std == 'W') {
+                    std = 'B';
+                } else {
+                    std = 'W';
+                }
+                
+            }
+
+            System.out.println(arr1);
+
+            List<Point> arr2 = new ArrayList<Point>() ;
+
+            int res = 0;
+            for (Point p : arr1) {
+                for (int i = p.x+1; i < R-1; i++) {
+                    for (int j = p.y+1; j < C-1; j++) {
+                        if (arr[i][j] != std) {
+                            res++;
+                        }
+                    }
+                }
+            }
+
+            System.out.println(arr2);
+            System.out.println(res);
+        } else {
+            System.out.print(0);
         }
 
-        // System.out.println(arr2);
-        System.out.println(res);
 
-
-
-        
+            
         
     }
 }
