@@ -58,7 +58,7 @@ public class Main {
                 
             }
 
-            System.out.println(arr1);
+            // System.out.println(arr1);
 
             List<Point> arr2 = new ArrayList<Point>() ;
 
@@ -73,7 +73,7 @@ public class Main {
                 }
             }
 
-            System.out.println(arr2);
+            // System.out.println(arr2);
             System.out.println(res);
         } else {
             System.out.print(0);
