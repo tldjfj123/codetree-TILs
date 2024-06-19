@@ -3,8 +3,8 @@ import java.util.*;
 public class Main {
     static int N, M;
     static char[][] arr;
-    static int[] dx = {1, 1, 0};
-    static int[] dy = {0, 1, 1};
+    static int[] dx = {-1, 1, 0, 0, -1, -1, 1, 1};
+    static int[] dy = {0, 0, -1, 1, -1, 1, -1, 1}; 
 
     public static boolean inRange(int x, int y) {
         if (0 <= x && x < N && 0 <= y && y < M) {
@@ -34,26 +34,28 @@ public class Main {
 
         for (int i = 0; i < N; i++) { //x
             for (int j = 0; j < M; j++) { //y
-                for (int k = 0; k < dx.length; k++) { //dxdy 방향으로 탐색
-                    int cntL = 0;
-                    int cntE = 0;
+
+                for (int k = 0; k < 8; k++) { //dxdy 8방향으로 탐색
+                    boolean one = false;
+                    boolean two = false;
+                    boolean three = false;
 
                     for (int t = 0; t < 3; t++) {
                         int nx = i + (dx[k] * t);
                         int ny = j + (dy[k] * t);
                         if (inRange(nx, ny)) {
-                            // System.out.println(nx + " " + ny);
-                            if (arr[nx][ny] == 'L') {
-                                cntL++;
-                            }
-                            if (arr[nx][ny] == 'E') {
-                                cntE++;
+                            if (t == 0 && arr[nx][ny] == 'L') {
+                                one = true;
+                            } else if (t == 1 && arr[nx][ny] == 'E') {
+                                two = true;
+                            } else if (t == 2 && arr[nx][ny] == 'E') {
+                                three = true;
                             }
                         }
                         
                     }
                     
-                    if (cntL == 1 && cntE == 2) {
+                    if (one && two && three) {
                         cnt++;
                     }
                     
