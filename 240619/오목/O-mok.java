@@ -192,15 +192,18 @@ public class Main {
         // System.out.println(resX + " " + resY + " " + whoWin);
         System.out.println(whoWin);
 
-        if (type == 1) {
+        if (whoWin != 0) {
+            if (type == 1) {
             System.out.println((resX+1) + " " + (resY-1));
-        } else if (type == 2) {
-            System.out.println((resX-1) + " " + (resY+1));
-        } else if (type == 3) {
-            System.out.println((resX-1) + " " + (resY-1));
-        } else {
-            System.out.println((resX-1) + " " + (resY+3));
-        }
+            } else if (type == 2) {
+                System.out.println((resX-1) + " " + (resY+1));
+            } else if (type == 3) {
+                System.out.println((resX-1) + " " + (resY-1));
+            } else {
+                System.out.println((resX-1) + " " + (resY+3));
+            }
 
+        }
+        
     }
 }
