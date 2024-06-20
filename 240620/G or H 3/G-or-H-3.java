@@ -20,12 +20,13 @@ public class Main {
             }
         }
 
+        // System.out.println(Arrays.toString(arr));
         // for (int i = 0; i <3; i++) {
         //     System.out.println(arr[i]);
         // }
 
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i <= N-K; i++) {
+        for (int i = 0; i <= 10000 - K; i++) {
             int tmp = 0;
             for (int j = i; j <= i+K; j++) {
                 tmp += arr[j];
