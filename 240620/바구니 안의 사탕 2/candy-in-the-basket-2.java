@@ -13,7 +13,7 @@ public class Main {
             int v = sc.nextInt();
             int point = sc.nextInt()-1;
 
-            arr[point] = v;
+            arr[point] += v;
         }
         
         int max = Integer.MIN_VALUE;
