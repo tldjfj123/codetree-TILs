@@ -28,7 +28,7 @@ public class Main {
 
         int res = 0;
         for (int i = 0; i <= N - M; i++) {
-            int[] cntA = new int[10];
+            int[] cntA = new int[101];
 
             for (int j = i; j < i + M; j++) {
                 cntA[arrA[j]]++;
