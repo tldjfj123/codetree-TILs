@@ -7,7 +7,7 @@ public class Main {
         int N = sc.nextInt(); //사탕의 갯수
         int K = sc.nextInt(); //배열 범위
 
-        int[] arr = new int[201];
+        int[] arr = new int[200];
 
         for (int i = 0; i < N; i++) {
             int v = sc.nextInt();
@@ -18,12 +18,19 @@ public class Main {
         
         int max = Integer.MIN_VALUE;
         //구심점 잡고 순회
-        for (int i = K; i <= 200 - K; i++) {
+        for (int i = K; i < 200; i++) {
             int tmp = 0;
-            for (int j = i - K; j <= i + K; j++) {
-                // System.out.print(j + " ");
+            int start = i - K;
+            int end = i + K;
+            
+            if (end > 200) {
+                end = 199;
+            }
+            
+            for (int j = start; j < end; j++) {
                 tmp += arr[j];
             }
+            
             max = Math.max(max ,tmp);
         }
 
