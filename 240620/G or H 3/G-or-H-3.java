@@ -4,34 +4,35 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt(); 
-        int k = sc.nextInt();  // 사진의 크기
+        int N = sc.nextInt();
+        int K = sc.nextInt();
 
-        String[] arr = new String[10001];
+        int[] arr = new int[10001];
 
-        for (int i = 0; i < n; i++) {
-            int v = sc.nextInt();
+        for (int i = 0; i < N; i++) {
+            int idx = sc.nextInt()-1;
             String s = sc.next();
 
-            arr[v] = s;
+            if (s.equals("G")) {
+                arr[idx] = 1;
+            } else {
+                arr[idx] = 2;
+            }
         }
 
-        // System.out.println(Arrays.toString(arr));
+        // for (int i = 0; i <3; i++) {
+        //     System.out.println(arr[i]);
+        // }
 
         int max = Integer.MIN_VALUE;
-        for (int i = 1; i <= n-k+1; i++) {
+        for (int i = 0; i <= N-K; i++) {
             int tmp = 0;
-            for (int j = i; j < i+k; j++) {
-                if (arr[j] != null && arr[j].equals("G")) {
-                    tmp += 2;
-                } else if(arr[j] != null && arr[j].equals("H")) {
-                    tmp += 1;
-                }
+            for (int j = i; j <= i+K; j++) {
+                tmp += arr[j];
             }
-            max = Math.max(max, tmp);
+            max = Math.max(tmp, max);
         }
 
         System.out.println(max);
-
     }
 }
