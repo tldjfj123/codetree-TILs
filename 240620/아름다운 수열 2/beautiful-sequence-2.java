@@ -7,7 +7,7 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
 
-        int[] cntB = new int[10];
+        int[] cntB = new int[101];
 
         int[] arrA = new int[N];
         int[] arrB = new int[M];
