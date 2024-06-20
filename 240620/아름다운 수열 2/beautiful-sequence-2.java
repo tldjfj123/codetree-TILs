@@ -4,8 +4,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int N = sc.nextInt(); //수열 A
-        int M = sc.nextInt(); //수열 B
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+
+        int[] cntB = new int[10];
 
         int[] arrA = new int[N];
         int[] arrB = new int[M];
@@ -13,44 +15,30 @@ public class Main {
         for (int i = 0; i < N; i++) {
             arrA[i] = sc.nextInt();
         }
-
+        
         for (int i = 0; i < M; i++) {
             arrB[i] = sc.nextInt();
         }
 
-        int cnt = 0;
+        //B 원소 갯수세기
 
+        for (int i = 0; i < M; i++) {
+            cntB[arrB[i]]++;
+        }
+
+        int res = 0;
         for (int i = 0; i <= N - M; i++) {
-            boolean[] checked = new boolean[M];
+            int[] cntA = new int[10];
 
             for (int j = i; j < i + M; j++) {
-                // System.out.print(arrA[j] + " ");
-                
-                for (int k = 0; k < M; k++) {
-                    if (arrA[j] == arrB[k]) {
-                        checked[k] = true;
-                    }
-                }
-                // System.out.println(Arrays.toString(checked));
-
-                boolean flag = true;
-                for (int k = 0; k < M; k++) {
-                    if (!checked[k]) {
-                        flag = false;
-                    }
-                }
-
-                if (flag) {
-                    cnt++;
-                }
-
-                
+                cntA[arrA[j]]++;
             }
-            
+
+            if (Arrays.equals(cntA, cntB)) {
+                res++;
+            }
         }
-        System.out.println(cnt);
 
-
-
+        System.out.println(res);
     }
 }
