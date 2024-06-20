@@ -23,11 +23,11 @@ public class Main {
             int start = i - K;
             int end = i + K;
             
-            if (end > 200) {
+            if (end > 199) {
                 end = 199;
             }
             
-            for (int j = start; j < end; j++) {
+            for (int j = start; j <= end; j++) {
                 tmp += arr[j];
             }
             
