@@ -22,10 +22,10 @@ public class Main {
                         int t1 = arr[j];
                         int t2 = arr[k];
                         
-                        int team2 = t1 + t2;
-                        int team3 = sum - team1 - team2;
+                        int team2 = t1 + t2; // 2명 1팀
+                        int team3 = sum - team1 - team2; // 2명 2팀
 
-                        if (team1 != team2 && team2 != team3) {
+                        if (team1 != team2 && team2 != team3 && team3 != team1) {
                             int max = Math.max(team1, Math.max(team2, team3));
                             int min = Math.min(team1, Math.min(team2, team3));
 
