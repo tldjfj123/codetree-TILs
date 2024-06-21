@@ -12,7 +12,7 @@ public class Main {
             sum += arr[i];
         }
 
-        int res = -1;
+        int res = Integer.MAX_VALUE;
         for (int i = 0; i < 5; i++) {
             // System.out.println("i : " + i);
             int team1 = arr[i]; // 깍두기 1명 정하기
@@ -38,6 +38,11 @@ public class Main {
             }
         }
 
-        System.out.println(res);
+        if (res == Integer.MAX_VALUE) {
+            System.out.println(-1);
+        } else {
+            System.out.println(res);
+        }
+        
     }
 }
