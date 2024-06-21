@@ -53,20 +53,20 @@ public class Main {
                     Point p3 = arr[k];
 
                     if (checkX(p1.x, p1.y,  p2.x, p2.y)) {
-                        if (checkY(p2.x, p2.y , p3.x, p3.y)) {
+                        if (checkY(p2.x, p2.y , p3.x, p3.y) || checkY(p1.x, p1.y, p3.x, p3.y)) {
                             int tmp = Math.abs((p1.x * p2.y + p2.x * p3.y + p3.x * p1.y) - (p2.x * p1.y + p3.x * p2.y + p1.x * p3.y));
                             res = Math.max(tmp, res);
                         }
                     } 
                     if (checkX(p2.x, p2.y,  p3.x, p3.y)) {
-                        if (checkY(p3.x, p3.y, p1.x, p1.y)) {
+                        if (checkY(p3.x, p3.y, p1.x, p1.y) || checkY(p1.x, p1.y, p2.x, p2.y)) {
                             int tmp = Math.abs((p1.x * p2.y + p2.x * p3.y + p3.x * p1.y) - (p2.x * p1.y + p3.x * p2.y + p1.x * p3.y));
                             res = Math.max(tmp, res);
                         }
                     } 
 
                     if (checkX(p1.x, p1.y,  p3.x, p3.y)) {
-                        if (checkY(p3.x, p3.y, p2.x, p2.y)) {
+                        if (checkY(p3.x, p3.y, p2.x, p2.y) || checkY(p1.x, p1.y, p2.x, p2.y)) {
                             int tmp = Math.abs((p1.x * p2.y + p2.x * p3.y + p3.x * p1.y) - (p2.x * p1.y + p3.x * p2.y + p1.x * p3.y));
                             res = Math.max(tmp, res);
                         }
