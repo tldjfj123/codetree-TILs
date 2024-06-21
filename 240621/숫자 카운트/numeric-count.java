@@ -77,10 +77,17 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int[] arr = new int[889];
+        int[] arr = new int[729];
 
-        for (int i = 111; i <= 999; i++) {
-            arr[i-111] = i;
+        int idx = 0;
+
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 1; j <= 9; j++) {
+                for (int k = 1; k <= 9; k++) {
+                    arr[idx] = i * 100 + j * 10 + k;
+                    idx++;
+                }
+            }
         }
 
         Test[] tests = new Test[N];
@@ -90,24 +97,30 @@ public class Main {
 
         int res = 0;
         for (int i = 0; i < arr.length; i++) {
-            boolean isOk = true;
-            for (Test t : tests) {
-                int tmp1 = calc1(t.x, arr[i]);
-                int tmp2 = calc2(t.x, arr[i]);
+            int hundreds = arr[i] / 100;        // 백의 자리
+            int tens = (arr[i] / 10) % 10;      // 십의 자리
+            int units = arr[i] % 10;            // 일의 자리
+            if(hundreds != tens && tens != units && units != hundreds) {
+                boolean isOk = true;
+                for (Test t : tests) {
+                    int tmp1 = calc1(t.x, arr[i]);
+                    int tmp2 = calc2(t.x, arr[i]);
 
-                if (tmp1 != t.cnt1) {
-                    isOk = false;
-                    continue;
+                    if (tmp1 != t.cnt1) {
+                        isOk = false;
+                        break;
+                    }
+
+                    if (tmp2 != t.cnt2) {
+                        isOk = false;
+                        break;
+                    }
                 }
 
-                if (tmp2 != t.cnt2) {
-                    isOk = false;
-                    continue;
+                if (isOk) {
+                    // System.out.println(arr[i]);
+                    res++;
                 }
-            }
-
-            if (isOk) {
-                res++;
             }
         }
         System.out.println(res);
