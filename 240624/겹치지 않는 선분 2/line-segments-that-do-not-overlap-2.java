@@ -36,8 +36,7 @@ public class Main {
         Arrays.sort(arr);
 
         // System.out.println(Arrays.toString(arr));
-        boolean[] check = new boolean[N];
-        int res = 0;
+        int res = N;
 
         for (int i = 0; i < arr.length; i++) {
             boolean isBack = false;
@@ -55,40 +54,32 @@ public class Main {
                 if (isBack) { 
                     if (jStart > jEnd) { // 둘다 왼쪽방향
                         if ((iEnd <= jEnd && jStart <= iStart) || (jEnd <= iEnd && iStart <= jStart)) {
-                            check[i] = true;
-                            check[j] = true;
+                            res -= 2;
                         }
                     } else { // 한놈은 왼쪽 한놈은 오른쪽
                         if (iEnd <= jStart && jStart <= iStart) {
-                            check[i] = true;
-                            check[j] = true;
+                            res -= 2;
                         }   
                     }
                 } else {
                     if (jStart > jEnd) { // 한놈은 오른쪽 한놈은 왼쪽
                         if (iStart <= jEnd && jEnd <= iEnd) {
-                            check[i] = true;
-                            check[j] = true;
+                            res -= 2;
                         }
                     } else { // 둘다 오른쪽
                         if ((iStart <= jStart && jEnd <= iEnd) || (jStart <= iStart && iEnd <= jEnd)) {
-                            check[i] = true;
-                            check[j] = true;
+                            res -= 2;
                         }
                     }
 
                 }
             }
         }
-
-        // System.out.println(Arrays.toString(check));
         
-        for (boolean c : check) {
-            if(!c) {
-                res++;
-            }
+        if (res > 0) {
+            System.out.println(res);
+        } else {
+            System.out.println(0);
         }
-
-        System.out.println(res);
     }
 }
