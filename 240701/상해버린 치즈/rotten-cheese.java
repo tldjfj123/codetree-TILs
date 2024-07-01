@@ -57,13 +57,15 @@ public class Main {
                 List<Cheese> arr = map.get(key); // ?번이 먹은 종류랑 시간 담고있음
 
                 for (Cheese c : arr) {
-                    if (c.type == key && c.time < time) {
+                    if (c.time < time) { // 같은 종류를 확진시간보다 빨리먹었을경우
                         origin.add(c.type);
                     }
                 }
                 
             }
         }
+
+        // System.out.println(origin);
 
         int res = 0;
         for (int o : origin) {
