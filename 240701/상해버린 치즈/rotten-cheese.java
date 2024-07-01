@@ -47,7 +47,7 @@ public class Main {
 
         // System.out.println(map);
 
-        Set<Integer> origin = new HashSet<Integer>();
+        int[] origin = new int[M+1];
 
         for (int i = 0; i < S; i++) {
             int person = sc.nextInt();
@@ -58,30 +58,36 @@ public class Main {
 
                 for (Cheese c : arr) {
                     if (key == person && c.time < time) { // 같은 종류를 확진시간보다 빨리먹었을경우
-                        origin.add(c.type);
+                        origin[c.type]++;
                     }
                 }
                 
             }
         }
 
-        // System.out.println(origin);
+        int maxValue = 0;
+        int maxIdx = 0;
+        for (int i = 0; i < origin.length; i++) {
+            if (origin[i] > maxValue) {
+                maxValue = Math.max(maxValue, origin[i]);
+                maxIdx = i;
+            }
+        }
+
+        // System.out.println(maxIdx);
 
         int res = 0;
-        for (int key : map.keySet()) { //사람
+        int v = 0;
+        for (int key : map.keySet()) { // 사람
             List<Cheese> tmpArr = map.get(key); // 먹은 치즈
-            int v = 0;
-
             for (Cheese c : tmpArr) {
-                for (int o : origin) {
-                    if (o == c.type) {
-                        v++;
-                    }
+                if (c.type == maxIdx) {
+                    v++;
+                    break;
                 }
             }
-            
-            res = Math.max(v, res);
         }
+        res = Math.max(v, res);
 
         System.out.println(res);
 
