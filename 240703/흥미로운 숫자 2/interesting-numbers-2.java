@@ -17,7 +17,7 @@ public class Main {
         }
         
 
-        if (map.keySet().size() == 2) {
+        if (map.keySet().size() == 2 && map.containsValue(1)) {
             return 1;
         }
 
