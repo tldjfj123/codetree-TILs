@@ -17,8 +17,8 @@ class Point {
 public class Main {
     public static int calc(Point[] arr) {
         int res = Integer.MAX_VALUE;
-        for (int i = 1; i <= 100; i++) { // x값
-            for (int j = 1; j <= 100; j++) { // y값
+        for (int i = 2; i <= 100; i += 2) { // x값
+            for (int j = 2; j <= 100; j += 2) { // y값
                 int cnt1 = 0;
                 int cnt2 = 0;
                 int cnt3 = 0;
