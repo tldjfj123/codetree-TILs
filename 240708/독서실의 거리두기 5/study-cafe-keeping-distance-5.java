@@ -23,26 +23,22 @@ public class Main {
             int[] arrCopy = Arrays.copyOf(arr, arr.length);
             arrCopy[i] = 1;
 
-            List<Integer> calc = new ArrayList<Integer>();
+            List<Integer> calc = new ArrayList<>();
             for (int j = 0; j < N; j++) {
                 if (arrCopy[j] == 1) {
                     calc.add(j);
                 }
             }
 
-            Integer[] calcNum = calc.toArray(new Integer[0]); // Integer 배열로 변환
-            
-            if (calcNum.length < 3) {
-                continue; // 연속된 3개의 1이 없다면 넘어가기
+            if (calc.size() < 2) {
+                continue; // 연속된 2개의 1이 없다면 넘어가기
             }
 
-            int tmpV = Integer.MAX_VALUE; // tmpV를 최대값으로 초기화
-            for (int j = 0; j < calcNum.length - 2; j++) { // 내부 루프 인덱스 j 사용
-                int left = calcNum[j];
-                int mid = calcNum[j+1];
-                int right = calcNum[j+2];
-
-                tmpV = Math.min(tmpV, Math.min(mid - left, right - mid));
+            // 최소 거리 찾기
+            int tmpV = Integer.MAX_VALUE; // 최대 값으로 초기화
+            for (int j = 0; j < calc.size() - 1; j++) {
+                int distance = calc.get(j + 1) - calc.get(j);
+                tmpV = Math.min(tmpV, distance);
             }
 
             res = Math.max(tmpV, res);
