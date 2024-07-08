@@ -6,39 +6,48 @@ public class Main {
 
         int N = sc.nextInt();
         String s = sc.next();
-
         char[] tmp = s.toCharArray();
-        
-        List<Integer> t = new ArrayList<Integer>();
+
+        int[] arr = new int[N];
 
         for (int i = 0; i < N; i++) {
-            int v = tmp[i] - '0';
-            if (v == 1) {
-                t.add(i);
-            }
+            arr[i] = tmp[i] - '0';
         }
-
-        int[] arr = new int[t.size()];
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = t.get(i);
-        }
-
-        // System.out.println(Arrays.toString(arr));
-
+        
         int res = Integer.MIN_VALUE;
-        for (int i = 0; i < arr.length - 1; i++) {
-            int left = arr[i];
-            int right = arr[i+1];
-
-            if ((left + right) % 2 == 0) {
-                res = Math.max(res, (right - left) / 2);
+        for (int i = 0; i < N; i++) { // 자리 고르기
+            if (arr[i] == 1) { // 자리 있으면 넘어가기
+                continue;
             }
+        
+            int[] arrCopy = Arrays.copyOf(arr, arr.length);
+            arrCopy[i] = 1;
+
+            List<Integer> calc = new ArrayList<Integer>();
+            for (int j = 0; j < N; j++) {
+                if (arrCopy[j] == 1) {
+                    calc.add(j);
+                }
+            }
+
+            Integer[] calcNum = calc.toArray(new Integer[0]); // Integer 배열로 변환
+            
+            if (calcNum.length < 3) {
+                continue; // 연속된 3개의 1이 없다면 넘어가기
+            }
+
+            int tmpV = Integer.MAX_VALUE; // tmpV를 최대값으로 초기화
+            for (int j = 0; j < calcNum.length - 2; j++) { // 내부 루프 인덱스 j 사용
+                int left = calcNum[j];
+                int mid = calcNum[j+1];
+                int right = calcNum[j+2];
+
+                tmpV = Math.min(tmpV, Math.min(mid - left, right - mid));
+            }
+
+            res = Math.max(tmpV, res);
         }
 
         System.out.println(res);
-
-
-
     }
 }
