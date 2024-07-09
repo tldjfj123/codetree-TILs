@@ -14,18 +14,26 @@ public class Main {
         }
 
         Arrays.sort(arr);
-
-        int idx = 1;
         
-        while (true) {
-            if (arr[idx] - arr[0] <= K) {
-                idx++;
-            } else {
-                break;
-            }
-        }
+        // System.out.println(Arrays.toString(arr));
 
-        System.out.println(idx);
+        int res = Integer.MIN_VALUE;
+        for (int i = 0; i < N; i++) {
+            int cnt = 1;
+
+            for (int j = i+1; j < N; j++) {
+                if (arr[j] - arr[i] <= K) {
+                    cnt++;
+                } else {
+                    break;
+                }
+            }
+
+            res = Math.max(cnt, res);
+        }
+        
+
+        System.out.println(res);
 
 
     }
