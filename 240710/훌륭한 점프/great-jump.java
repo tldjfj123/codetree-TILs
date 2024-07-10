@@ -5,7 +5,7 @@ public class Main {
     static int[] arr;
 
     public static boolean isPossible(int maxVal) {
-        List<Integer> tmp = new ArrayList<Integer>();
+        List<Integer> tmp = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
             if (arr[i] <= maxVal) {
@@ -13,29 +13,20 @@ public class Main {
             }
         }
 
-        int[] res = new int[tmp.size()];
-
-        for (int i = 0; i < tmp.size(); i++) {
-            res[i] = tmp.get(i);
-        }
-
-        // System.out.println(Arrays.toString(res));
-
-        if (res[0] != 0 || res[res.length-1] != n-1) {
+        if (tmp.size() == 0 || tmp.get(0) != 0 || tmp.get(tmp.size() - 1) != n - 1) {
             return false;
         }
 
-        for (int i = 1; i < res.length; i++) {
-            int d = res[i] - res[i-1];
-
+        for (int i = 1; i < tmp.size(); i++) {
+            int d = tmp.get(i) - tmp.get(i - 1);
             if (d > k) {
                 return false;
             }
         }
 
         return true;
-
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -48,16 +39,15 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-
         int res = 0;
 
-        for (int i = 1; i <= n; i++) { // 최솟값
+        // 범위는 1부터 배열의 최대 값까지입니다.
+        int maxValue = Arrays.stream(arr).max().getAsInt();
+        for (int i = 1; i <= maxValue; i++) {
             if (isPossible(i)) {
                 System.out.println(i);
                 return;
             }
-
         }
-        
     }
 }
