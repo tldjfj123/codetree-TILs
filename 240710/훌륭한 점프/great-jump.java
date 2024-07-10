@@ -4,20 +4,30 @@ public class Main {
     static int n, k;
     static int[] arr;
 
-    public static boolean isPossible(int minVal) {
-        int[] check = new int[n];
-        int cnt = 0;
+    public static boolean isPossible(int maxVal) {
+        List<Integer> tmp = new ArrayList<Integer>();
 
         for (int i = 0; i < n; i++) {
-            if (arr[i] > minVal) {
-                check[cnt++] = i;
+            if (arr[i] <= maxVal) {
+                tmp.add(i);
             }
         }
 
-        // System.out.println(Arrays.toString(check));
+        int[] res = new int[tmp.size()];
 
-        for (int i = 1; i < cnt; i++) {
-            int d = arr[i] - arr[i-1];
+        for (int i = 0; i < tmp.size(); i++) {
+            res[i] = tmp.get(i);
+        }
+
+        // System.out.println(Arrays.toString(res));
+
+        if (res[0] != 0 || res[res.length-1] != n-1) {
+            return false;
+        }
+
+        for (int i = 1; i < res.length; i++) {
+            int d = res[i] - res[i-1];
+
             if (d > k) {
                 return false;
             }
@@ -43,13 +53,11 @@ public class Main {
 
         for (int i = 1; i <= n; i++) { // 최솟값
             if (isPossible(i)) {
-                res = Math.max(res, i);
+                System.out.println(i);
+                return;
             }
+
         }
-
-        System.out.println(res);
-
-
         
     }
 }
