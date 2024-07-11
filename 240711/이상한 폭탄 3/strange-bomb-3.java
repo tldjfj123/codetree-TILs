@@ -8,7 +8,7 @@ public class Main {
         int K = sc.nextInt(); // 폭탄 길이
 
         int[] arr = new int[N];
-        int[] cnt = new int[N + 1]; // 터진 갯수
+        Map<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < N; i++) {
             arr[i] = sc.nextInt();
@@ -35,34 +35,29 @@ public class Main {
                 for (int j = left; j <= right; j++) {
                     if (arr[j] == boom) {
                         arr[j] = 0;
-                        cnt[boom]++;
+                        map.put(boom, map.getOrDefault(boom, 0) + 1);
                     }
                 }
             }
         }
 
         // 가장 많이 터진 폭탄의 번호 찾기
+        int maxBoom = 0;
         int maxCount = 0;
-        boolean isFound = false;
-        for (int i = 1; i <= N; i++) {
-            if (cnt[i] > maxCount) {
-                maxCount = cnt[i];
-                isFound = true;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            int boom = entry.getKey();
+            int count = entry.getValue();
+            if (count > maxCount || (count == maxCount && boom > maxBoom)) {
+                maxCount = count;
+                maxBoom = boom;
             }
         }
 
-        int res = 0;
-        for (int i = 1; i <= N; i++) {
-            if (cnt[i] == maxCount) {
-                res = i;
-            }
+        // Map이 비어있을 경우 0 출력
+        if (map.isEmpty()) {
+            maxBoom = 0;
         }
-        
-        if (isFound) {
-            System.out.println(res);
-        } else {
-            System.out.println(0);
-        }
-        
+
+        System.out.println(maxBoom);
     }
 }
