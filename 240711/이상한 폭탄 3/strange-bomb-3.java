@@ -43,9 +43,11 @@ public class Main {
 
         // 가장 많이 터진 폭탄의 번호 찾기
         int maxCount = 0;
+        boolean isFound = false;
         for (int i = 1; i <= N; i++) {
             if (cnt[i] > maxCount) {
                 maxCount = cnt[i];
+                isFound = true;
             }
         }
 
@@ -55,7 +57,12 @@ public class Main {
                 res = i;
             }
         }
-
-        System.out.println(res);
+        
+        if (isFound) {
+            System.out.println(res);
+        } else {
+            System.out.println(0);
+        }
+        
     }
 }
