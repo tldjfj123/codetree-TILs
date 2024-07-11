@@ -33,7 +33,7 @@ public class Main {
             while (idx != N - 1) {
                 int calc = arr[idx] - before;
 
-                if (calc > 0 && check[calc] == 0) {
+                if (calc > 0 && calc <= N && check[calc] == 0) {
                     s += String.valueOf(calc);
                     check[calc] = idx+1;
                     before = calc;
