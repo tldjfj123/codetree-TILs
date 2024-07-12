@@ -8,9 +8,20 @@ public class Main {
         int k = sc.nextInt();
 
         int[] arr = new int[n];
+        
+        int mi = Integer.MAX_VALUE;
+        int ma = Integer.MIN_VALUE;
 
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+            int v = sc.nextInt();
+            arr[i] = v;
+            mi = Math.min(v, mi);
+            ma = Math.max(v, ma);
+        }
+
+        if (ma - mi <= k) {
+            System.out.println(0);
+            return;
         }
         
         int res = Integer.MAX_VALUE;
