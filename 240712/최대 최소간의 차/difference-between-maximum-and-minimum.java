@@ -13,8 +13,8 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         
-        int res = Integer.MAX_VALUE;
-        for (int i = 0; i <= 10000 - k; i++) {
+        int res = 9999;
+        for (int i = 0; i <= 10000 - k; i++) { // 최소값 설정
             int start = i;
             int end = i + k;
 
