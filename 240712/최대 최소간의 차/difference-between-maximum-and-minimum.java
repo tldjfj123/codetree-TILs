@@ -9,29 +9,25 @@ public class Main {
 
         int[] arr = new int[n];
 
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-
         for (int i = 0; i < n; i++) {
-            int v = sc.nextInt();
-            arr[i] = v;
-
-            min = Math.min(min, v);
-            max = Math.max(max, v);
+            arr[i] = sc.nextInt();
         }
         
-        int res = 0;
-        for (int i = min; i <= max - k; i++) {
-            int start = i;
-            int end = i + k;
+        int res = Integer.MAX_VALUE;
+        for (int t = 0; t <= k; t++) {
+            for (int i = 1; i <= 10000 - k; i++) {
+                int start = i;
+                int end = i + t;
 
-            int tmp = 0;
-            for (int j = 0; j < n; j++) {
-                tmp += Math.min(Math.abs(arr[j] - start), Math.abs(arr[j] - end));
+                int tmp = 0;
+                for (int j = 0; j < n; j++) {
+                    tmp += Math.min(Math.abs(arr[j] - start), Math.abs(arr[j] - end));
+                }
+
+                res = Math.min(tmp, res);
             }
-
-            res = Math.min(tmp, res);
         }
+
 
         System.out.println(res);
     }
