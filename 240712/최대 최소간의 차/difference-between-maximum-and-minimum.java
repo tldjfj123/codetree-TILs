@@ -16,7 +16,7 @@ public class Main {
         int res = Integer.MAX_VALUE;
         for (int i = 0; i <= 10000 - k; i++) {
             int start = i;
-            int end = i + 2;
+            int end = i + k;
 
             int tmp = 0;
             for (int j = 0; j < n; j++) {
