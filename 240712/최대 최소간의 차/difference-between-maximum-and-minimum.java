@@ -9,12 +9,19 @@ public class Main {
 
         int[] arr = new int[n];
 
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+            int v = sc.nextInt();
+            arr[i] = v;
+
+            min = Math.min(min, v);
+            max = Math.max(max, v);
         }
         
-        int res = Integer.MAX_VALUE;
-        for (int i = 1; i <= 10000 - k; i++) {
+        int res = 0;
+        for (int i = min; i <= max - k; i++) {
             int start = i;
             int end = i + k;
 
