@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i <= 10000 - k; i++) {
+            int start = i;
+            int end = i + 2;
+
+            int tmp = 0;
+            for (int j = 0; j < n; j++) {
+                tmp += Math.min(Math.abs(arr[j] - start), Math.abs(arr[j] - end));
+            }
+
+            res = Math.min(tmp, res);
+        }
+
+        System.out.println(res);
+    }
+}
