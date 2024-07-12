@@ -14,19 +14,16 @@ public class Main {
         }
         
         int res = Integer.MAX_VALUE;
-        for (int t = 0; t <= k; t++) { // 차이값
-            for (int i = 1; i <= 10000 - t; i++) {
-                int start = i;
-                int end = i + t;
+        for (int i = 0; i <= 10000 - k; i++) {
+            int start = i;
+            int end = i + k;
 
-                int sum = 0;
-                for (int j = 0; j < n; j++) {
-                    sum += Math.min(Math.abs(arr[j] - start), Math.abs(arr[j] - end));
-                }
-
-                res = Math.min(res, sum);
-                
+            int tmp = 0; // 차이 합
+            for (int j = 0; j < n; j++) {
+                tmp += Math.min(Math.abs(arr[j] - start), Math.abs(arr[j] - end));
             }
+
+            res = Math.min(tmp, res);
         }
 
         System.out.println(res);
