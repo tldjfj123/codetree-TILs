@@ -9,23 +9,27 @@ public class Main {
 
         int[] arr = new int[n];
 
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
-        }
-        
-        int res = Integer.MAX_VALUE;
-        for (int i = 0; i <= 10000 - k; i++) {
-            int start = i;
-            int end = i + k;
-
-            int tmp = 0; // 차이 합
-            for (int j = 0; j < n; j++) {
-                tmp += Math.min(Math.abs(arr[j] - start), Math.abs(arr[j] - end));
-            }
-
-            res = Math.min(tmp, res);
+            max = Math.max(max, arr[i]);
+            min = Math.min(min, arr[i]);
         }
 
-        System.out.println(res);
+        if (max - min <= k) {
+            System.out.println(0);
+            return;
+        }
+
+        int target = (max + min) / 2;
+        int cost = 0;
+
+        for (int i = 0; i < n; i++) {
+            cost += Math.abs(arr[i] - target);
+        }
+
+        System.out.println(cost);
     }
 }
