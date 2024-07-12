@@ -14,7 +14,7 @@ public class Main {
         }
         
         int res = 9999;
-        for (int i = 0; i <= 10000 - k; i++) { // 최소값 설정
+        for (int i = 1; i <= 10000 - k; i++) { // 최소값 설정
             int start = i;
             int end = i + k;
 
