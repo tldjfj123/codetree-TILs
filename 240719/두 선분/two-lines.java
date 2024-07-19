@@ -16,19 +16,14 @@ public class Main {
         */
         boolean check =false;
 
-        if (x1 > x3) {
-            if (x3 > x2) {
-                check = true;
-            }
-        } else {
-            if (x3 <= x2) {
-                check = true;
-            }
+        if (x1 <= x3 && x3 <= x2 || x3 <= x2 && x2 <= x4) {
+            check = true;
         } 
 
         if (check) {
             System.out.println("intersecting");
         } else {
-            System.out.println("nonintersecting");        }
+            System.out.println("nonintersecting");        
+        }
     }
 }
