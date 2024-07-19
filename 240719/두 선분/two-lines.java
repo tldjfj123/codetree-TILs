@@ -15,8 +15,15 @@ public class Main {
         2. 겹치는 경우
         */
         boolean check =false;
-        if (x3 <= x2) {
-            check = true;
+
+        if (x1 > x3) {
+            if (x3 > x2) {
+                check = true;
+            }
+        } else {
+            if (x3 <= x2) {
+                check = true;
+            }
         } 
 
         if (check) {
