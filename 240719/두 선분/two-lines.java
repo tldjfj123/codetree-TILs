@@ -16,7 +16,7 @@ public class Main {
         */
         boolean check =false;
 
-        if (x1 <= x3 && x3 <= x2 || x3 <= x2 && x2 <= x4) {
+        if (x1 <= x4 && x4 <= x2 || x3 <= x2 && x2 <= x4) {
             check = true;
         } 
 
