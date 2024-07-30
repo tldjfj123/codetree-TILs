@@ -1,28 +1,43 @@
 import java.util.*;
 
 public class Main {
+    public static int minTotalDistance(int n, int[] A, int[] B) {
+        int[] delta = new int[n];
+        for (int i = 0; i < n; i++) {
+            delta[i] = A[i] - B[i];
+        }
+
+        int prefixSum = 0;
+        int totalDistance = 0;
+
+        for (int i = 0; i < n; i++) {
+            prefixSum += delta[i];
+            totalDistance += Math.abs(prefixSum);
+        }
+
+        return totalDistance;
+    }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int[] arrA = new int[n];
-        int[] arrB = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            arrA[i] = sc.nextInt();
-        }
+        // 입력
+        int n = scanner.nextInt();
+        int[] A = new int[n];
+        int[] B = new int[n];
 
         for (int i = 0; i < n; i++) {
-            arrB[i] = sc.nextInt();
+            A[i] = scanner.nextInt();
         }
 
-        int cnt = 0;
-        for (int i = 0; i < n-1; i++) {
-            int gap = Math.abs(arrB[i] - arrA[i]);
-            cnt += gap;
-            arrA[i] += gap;
+        for (int i = 0; i < n; i++) {
+            B[i] = scanner.nextInt();
         }
 
-        System.out.println(cnt);
+        // 결과 계산 및 출력
+        int result = minTotalDistance(n, A, B);
+        System.out.println(result);
+
+        scanner.close();
     }
 }
