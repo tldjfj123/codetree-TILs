@@ -18,11 +18,9 @@ public class Main {
 
         int cnt = 0;
         for (int i = 0; i < n-1; i++) {
-            int gap = arrB[i] - arrA[i];
-            if (gap > 0) {
-                cnt += gap;
-                arrA[i] += gap;
-            }
+            int gap = Math.abs(arrB[i] - arrA[i]);
+            cnt += gap;
+            arrA[i] += gap;
         }
 
         System.out.println(cnt);
