@@ -32,13 +32,13 @@ public class Main {
             
         }
 
-        for (int i = 0; i < p; i++) {
-            if(arr[i].unread == 0) {
-                for (int j = 0; j < n; j++) {
-                    people[j] = 1;
-                }
-            }
-        }
+        // for (int i = 0; i < p; i++) {
+        //     if(arr[i].unread == 0) {
+        //         for (int j = 0; j < n; j++) {
+        //             people[j] = 1;
+        //         }
+        //     }
+        // }
 
         for (int i = 0; i < n; i++) {
             if (people[i] == 0) {
