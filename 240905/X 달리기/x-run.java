@@ -1,45 +1,45 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int X = sc.nextInt();
+        int x = sc.nextInt();
 
-        // 제곱근에 기반한 최대 증가 가능한 속도
-        int maxSpeed = (int) Math.sqrt(X);
 
-        int distance = 0;
-        int speed = 0;
-        int time = 0;
+        //속도를 올렸을때, 남은거리가 (속도) + (속도-1) + ... + 1보다 크다면 올려도 된다,
+        //속도를 유지했을때, 남은거리가 (속도) + (속도-1) + ... + 1보다 크다면 유지해도 된다,
+        //위 두 상황이 아니라면 속도를 감소해야한다.
 
-        // 속도를 증가시키면서 거리를 이동
-        while (speed < maxSpeed) {
-            speed++;
-            distance += speed;
-            time++;
-        }
+        //초깃값
+        int distance = 1;
+        int speed = 1;
+        int time = 1;
 
-        // 남은 거리를 속도를 감소시키며 맞추기
-        while (distance < X) {
-            if (speed > 1) {
+        int ret = 0;
+        while(true){
+            if(getDescSum(speed+1) <= x-distance){ //속도를 올려도 남은거리를 정확하게 완주할 수 있다면, 속도를 올린다
+                speed++;
+            }else if(getDescSum(speed) <= x-distance){ //속도를 유지해서 남은거리를 정확하게 완주할 수 있다면, 속도를 유지한다
+                //do nothing
+            }else{ //속도를 줄여야만 남은거리를 정확하게 완주할 수 있으므로, 속도를 줄인다.
                 speed--;
-                distance += speed;
-                time++;
-            } else {
-                // 속도가 1m/s일 때는 더 이상 감소할 수 없으므로, 한 번 더 추가
-                distance++;
-                time++;
+            }
+            time++;
+            distance += speed;
+
+            if(distance == x){
+                ret = time;
+                break;
             }
         }
+        System.out.print(ret);
+    }
 
-        // 도착 시 속도가 1m/s인지 확인하고 조정
-        if (distance > X) {
-            // 마지막 거리 조정
-            distance -= speed;
-            speed--;
-            time--;
+    static int getDescSum(int num){
+        if(num == 1){
+            return num;
+        }else{
+            return num + getDescSum(num-1);
         }
-
-        System.out.println(time);
     }
 }
