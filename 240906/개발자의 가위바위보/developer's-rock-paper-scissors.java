@@ -40,7 +40,7 @@ public class Main {
         int res1 = 0;
 
         for (Rsp a : arr) {
-            if (a.left == 1 && a.right == 3 || a.left == 2 && a.right == 3 || a.left == 3 && a.right == 1) {
+            if (a.left == 1 && a.right == 3 || a.left == 2 && a.right == 1 || a.left == 3 && a.right == 2) {
                 res1++;
             }
         }
