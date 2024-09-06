@@ -53,45 +53,7 @@ public class Main {
                 res2++;
             }
         }
-
-
-        // 3. 바 가 보
-        int res3 = 0;
-
-        for (Rsp a : arr) {
-            if (a.left == 1 && a.right == 2 || a.left == 2 && a.right == 3 || a.left == 3 && a.right == 1) {
-                res3++;
-            }
-        }
-
-        // 4. 바 보 가
-        int res4 = 0;
-
-        for (Rsp a : arr) {
-            if (a.left == 1 && a.right == 3 || a.left == 2 && a.right == 1 || a.left == 3 && a.right == 2) {
-                res4++;
-            }
-        }
-
-
-        // 5. 보 가 바
-        int res5 = 0;
-
-        for (Rsp a : arr) {
-            if (a.left == 1 && a.right == 3 || a.left == 2 && a.right == 1 || a.left == 3 && a.right == 1) {
-                res5++;
-            }
-        }
-
-        // 6. 보 바 가
-        int res6 = 0;
-
-        for (Rsp a : arr) {
-            if (a.left == 1 && a.right == 2 || a.left == 2 && a.right == 3 || a.left == 3 && a.right == 1) {
-                res6++;
-            }
-        }
-
-        System.out.println(Math.max(res1, Math.max(res2, Math.max(res3, Math.max(res4, Math.max(res5, res6))))));
+        
+        System.out.println(Math.max(res1, res2));
     }
 }
