@@ -29,7 +29,12 @@ public class Main {
             // System.out.println(fin);
         }
 
-        System.out.println(fin);
+        int realFin = 1000;
+        for (int i = 0; i < res.length-1; i++) {
+            realFin = Math.min(realFin, res[i+1] - res[i]);
+        }
+
+        System.out.println(Math.min(realFin, fin));
 
         
     }
