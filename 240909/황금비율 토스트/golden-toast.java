@@ -30,7 +30,7 @@ public class Main {
                 String v = sc.next();
                 it.add(v);
             } else { //D
-                if (it.hasPrevious()) {
+                if (it.hasNext()) {
                     it.next();
                     it.remove();
                 }
