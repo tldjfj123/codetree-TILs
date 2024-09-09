@@ -4,39 +4,39 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt(); //식빵 갯수
-        int m = sc.nextInt(); //레시피 암호문 수
-        String[] elements = sc.next().split("");
-        LinkedList<String> list = new LinkedList<String>(Arrays.asList(elements));
+        int n = sc.nextInt(); // 빵 수
+        int m = sc.nextInt(); // 레시피 수
+
+        String s = sc.next();
+        String[] tmp = s.split("");
+        LinkedList<String> list = new LinkedList<String>(Arrays.asList(tmp));
 
         // System.out.println(list);
 
-        int index = list.size();
+        ListIterator<String> it = list.listIterator(list.size());
+
         for (int i = 0; i < m; i++) {
             String order = sc.next();
-            
+
             if (order.equals("L")) {
-                if (index > 0) {
-                    index--;
+                if (it.hasPrevious()) {
+                    it.previous();
                 }
             } else if (order.equals("R")) {
-                if (index < list.size()) {
-                    index++;
+                if (it.hasNext()) {
+                    it.next();
                 }
             } else if (order.equals("P")) {
                 String v = sc.next();
-                list.add(index, v);
-                index++;
+                it.add(v);
             } else { //D
-                list.remove(index);
-                index--;
-            } 
+                it.next();
+                it.remove();
+            }
         }
 
-        for(String a : list) {
-            System.out.print(a);
+        for (String l : list) {
+            System.out.print(l);
         }
-
-
     }
 }
