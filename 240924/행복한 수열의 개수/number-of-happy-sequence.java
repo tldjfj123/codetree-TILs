@@ -33,12 +33,13 @@ public class Main {
                             stack.pop();
                         }
                         stack.push(arr[i][j]);
+                        if (stack.size() >= m) {
+                            cnt++;
+                            break;
+                        }
                     }
 
-                    if (stack.size() >= m) {
-                        cnt++;
-                        break;
-                    }
+                    
                 }
 
                 
@@ -55,11 +56,10 @@ public class Main {
                             stack.pop();
                         }
                         stack.push(arr[i][j]); 
-                    }
-
-                    if (stack.size() >= m) {
-                        cnt++;
-                        break;
+                        if (stack.size() >= m) {
+                            cnt++;
+                            break;
+                        }
                     }
                 }
 
