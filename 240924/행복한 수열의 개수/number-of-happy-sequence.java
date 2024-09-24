@@ -22,48 +22,37 @@ public class Main {
             System.out.println(2 * n);
         } else {
             int cnt = 0;
-            // 가로
-            for (int i = 0; i < n; i++) { //가로
-                Stack<Integer> stack = new Stack<Integer>();
-                for (int j = 0; j < n; j++) { // 세로
-                    if (stack.isEmpty()) {
-                        stack.push(arr[i][j]);
-                    } else {
-                        if (stack.peek() != arr[i][j]) {
-                            stack.pop();
-                        }
-                        stack.push(arr[i][j]);
-                        if (stack.size() >= m) {
+
+            // 가로 방향 연속 숫자 체크
+            for (int i = 0; i < n; i++) {
+                int consecutive = 1; // 연속되는 숫자의 개수
+                for (int j = 1; j < n; j++) {
+                    if (arr[i][j] == arr[i][j - 1]) {
+                        consecutive++;
+                        if (consecutive == m) {
                             cnt++;
-                            break;
+                            break; // m개의 연속된 숫자가 나오면 종료
                         }
+                    } else {
+                        consecutive = 1; // 연속이 끊기면 초기화
                     }
-
-                    
                 }
-
-                
             }
 
-            // 세로
-            for (int j = 0; j < n; j++) { //세로
-                Stack<Integer> stack = new Stack<Integer>();
-                for (int i = 0; i < n; i++) { // 가로
-                    if (stack.isEmpty()) {
-                        stack.push(arr[i][j]);
-                    } else {
-                        if (stack.peek() != arr[i][j]) {
-                            stack.pop();
-                        }
-                        stack.push(arr[i][j]); 
-                        if (stack.size() >= m) {
+            // 세로 방향 연속 숫자 체크
+            for (int j = 0; j < n; j++) {
+                int consecutive = 1;
+                for (int i = 1; i < n; i++) {
+                    if (arr[i][j] == arr[i - 1][j]) {
+                        consecutive++;
+                        if (consecutive == m) {
                             cnt++;
                             break;
                         }
+                    } else {
+                        consecutive = 1;
                     }
                 }
-
-                
             }
 
             System.out.println(cnt);
