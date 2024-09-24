@@ -18,7 +18,7 @@ public class Main {
             }
         }
 
-        if (n == 1) {
+        if (m == 1) {
             System.out.println(2 * n);
         } else {
             int cnt = 0;
