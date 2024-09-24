@@ -34,11 +34,14 @@ public class Main {
                         }
                         stack.push(arr[i][j]);
                     }
+
+                    if (stack.size() >= m) {
+                        cnt++;
+                        break;
+                    }
                 }
 
-                if (stack.size() >= m) {
-                    cnt++;
-                }
+                
             }
 
             // 세로
@@ -53,11 +56,14 @@ public class Main {
                         }
                         stack.push(arr[i][j]); 
                     }
+
+                    if (stack.size() >= m) {
+                        cnt++;
+                        break;
+                    }
                 }
 
-                if (stack.size() >= m) {
-                    cnt++;
-                }
+                
             }
 
             System.out.println(cnt);
